@@ -74,10 +74,10 @@ def main():
             cycle_B_losses.append(cycle_B_loss.numpy())
 
             if iteration % args.save_weights_freq == 0:
-                gan.G_A2B.save_weights(f'{out_path}/saved_weights/{iteration+1}_G_A2B.h5')
-                gan.G_B2A.save_weights(f'{out_path}/saved_weights/{iteration+1}_G_B2A.h5')
-                gan.D_A.save_weights(f'{out_path}/saved_weights/{iteration+1}_D_A.h5')
-                gan.D_B.save_weights(f'{out_path}/saved_weights/{iteration+1}_D_B.h5')
+                gan.G_A2B.save_weights(f'{out_path}/saved_weights/{iteration}_G_A2B.h5')
+                gan.G_B2A.save_weights(f'{out_path}/saved_weights/{iteration}_G_B2A.h5')
+                gan.D_A.save_weights(f'{out_path}/saved_weights/{iteration}_D_A.h5')
+                gan.D_B.save_weights(f'{out_path}/saved_weights/{iteration}_D_B.h5')
 
 
 if __name__ == "__main__":
