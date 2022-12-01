@@ -13,7 +13,7 @@ conda activate tfgpu
 conda install tensorflow-gpu -c conda-forge
 ```
 
-The code benefits from the [Monai Library](https://monai.io/) that is a Torch-based medical imaging library for custom preprocessing and caching of medical images. The preprocessing operations are performed in dataloader.py with specifications defned in the config.py file. The training specifications can be defined via the arguments defiend in the main.py file.
+The code benefits from [Monai](https://monai.io/) which is a Torch-based medical imaging library for custom preprocessing and caching of medical images. The preprocessing operations are performed in the dataloader.py file with specifications defned in the config.py file. The training specifications can be defined via the arguments defiend in the main.py file.
 
 The expected directories are as follows:
 
