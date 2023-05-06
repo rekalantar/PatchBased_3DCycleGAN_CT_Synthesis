@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('data_path', type=str, help='location where the data is stored')
 parser.add_argument('out_path', type=str, help='location where to save results')
-parser.add_argument('max_iterations', default=10000, type=int, nargs='?', help='select the total number of iterations for training')
+parser.add_argument('max_iterations', default=1000, type=int, nargs='?', help='select the total number of iterations for training')
 parser.add_argument('resume_training', default=False, type=bool, nargs='?', help='if resuming cycleGAN training. It also requires pretrained weights path')
 parser.add_argument('pretrained_path', default='', type=str, nargs='?', help='pretrained weights path for loading the generator and discriminator')
 parser.add_argument('save_train_freq', default=100, type=int, nargs='?', help='frequency to save training images')
@@ -58,7 +58,7 @@ def main():
         
             pred_slice=10 #slice number for saving patch slices during training
             if iteration % args.save_train_freq == 0:
-                save_tmp_images(iteration, loop_index, imgA[:,...,pred_slice,:],    imgB[:,...,pred_slice,:], 
+                save_tmp_images(iteration, imgA[:,...,pred_slice,:],    imgB[:,...,pred_slice,:], 
                                            fake_A[:,...,pred_slice,:],  fake_B[:,...,pred_slice,:],
                                            cycle_A[:,...,pred_slice,:], cycle_B[:,...,pred_slice,:], 
                                            out_path #folder name where the predictions during training will be saved
