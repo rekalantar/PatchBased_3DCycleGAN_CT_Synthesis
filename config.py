@@ -26,7 +26,7 @@ from monai.transforms import (
 params = {
     'num_pool': 100, #number of images generated in image pool
     'roi_size': [128,128,128], #determines the patch size
-    'pixdim':(0.8,0.8,8.0), #resampling pixel dimensions
+    'pixdim':(0.8,0.8,0.8), #resampling pixel dimensions
     'imgA_intensity_range': (-1000,1000), #range of intensities for nomalization to range [-1,1]
     'imgB_intensity_range': (0,1500),
 }

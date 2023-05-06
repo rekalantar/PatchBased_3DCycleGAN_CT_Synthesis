@@ -49,17 +49,16 @@ def main():
 
     iteration = 0
     while iteration < args.max_iterations:
-        print(iteration)
         loop_index = 0
         for batch_data in train_data_loader:
             imgA, imgB = batch_data["imgA"].detach().cpu().numpy()[0,...,None], batch_data["imgB"][0,...,None].detach().cpu().numpy()
-            print('imgA', imgA.shape, ' imgB', imgB.shape)
+            # print('imgA', imgA.shape, ' imgB', imgB.shape)
 
             fake_A, fake_B, cycle_A, cycle_B, G_A2B_loss, G_B2A_loss, cycle_A_loss, cycle_B_loss, D_A_loss, D_B_loss = gan.train_step(imgA, imgB)
         
             pred_slice=10 #slice number for saving patch slices during training
             if iteration % args.save_train_freq == 0:
-                save_tmp_images(iteration, imgA[:,...,pred_slice,:],    imgB[:,...,pred_slice,:], 
+                save_tmp_images(iteration, loop_index, imgA[:,...,pred_slice,:],    imgB[:,...,pred_slice,:], 
                                            fake_A[:,...,pred_slice,:],  fake_B[:,...,pred_slice,:],
                                            cycle_A[:,...,pred_slice,:], cycle_B[:,...,pred_slice,:], 
                                            out_path #folder name where the predictions during training will be saved
@@ -79,6 +78,8 @@ def main():
                 gan.D_A.save_weights(f'{out_path}/saved_weights/{iteration}_D_A.h5')
                 gan.D_B.save_weights(f'{out_path}/saved_weights/{iteration}_D_B.h5')
 
+            loop_index += 1
+            iteration += 1
 
 if __name__ == "__main__":
     main()
