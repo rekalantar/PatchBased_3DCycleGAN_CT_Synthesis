@@ -5,14 +5,20 @@ File created by Reza Kalantar - 29/11/2022
 import cv2
 import config
 import numpy as np
+import matplotlib.pyplot as plt
 
 def truncateAndSave(real, synthetic, reconstructed, path_name):
         image = np.hstack((real, synthetic, reconstructed))
         image = image[:, :, 0] # remove channel index
-        image_min = np.min(image)
-        image_max = np.max(image)
-        image_scaled = 255 * (image - image_min) / (image_max - image_min)
-        cv2.imwrite(path_name, image_scaled)
+        plt.imshow(image, cmap='gray')
+        plt.grid(False)
+        plt.axis('off')
+        plt.savefig(path_name)
+        plt.close()
+        # image_min = np.min(image)
+        # image_max = np.max(image)
+        # image_scaled = 255 * (image - image_min) / (image_max - image_min)
+        # cv2.imwrite(path_name, image_scaled)
     
 def save_tmp_images(iteration, real_image_A, real_image_B, synthetic_image_A, synthetic_image_B, 
                     reconstructed_image_A, reconstructed_image_B, out_path):

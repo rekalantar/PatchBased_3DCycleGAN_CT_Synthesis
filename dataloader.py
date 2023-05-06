@@ -4,6 +4,7 @@ File created by Reza Kalantar - 29/11/2022
 
 import glob
 import config
+import random
 from monai.data import DataLoader, CacheDataset, Dataset
 
 def CreateDataloader(args, mode='train', shuffle=True, cache=False):
@@ -17,6 +18,7 @@ def CreateDataloader(args, mode='train', shuffle=True, cache=False):
     '''
 
     files_A = glob.glob(f'{args.data_path}/{mode}/A/*.nii.gz')
+    random.shuffle(files_A) # shuffle files_A to ensure random patient selection for A and B
     files_B = glob.glob(f'{args.data_path}/{mode}/B/*.nii.gz')
 
     print(f"[INFO] {mode} A images: {len(files_A)}, {mode} B images: {len(files_B)}")
