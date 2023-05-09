@@ -2,6 +2,10 @@
 
 Cycle-consistent generative adversarial network (Cycle-GAN) is an unsupervised approach for image synthesis. In medical imaging, it promises to provide a tool for intricate data augmentation. Although some clinical studies report that GANs may generate unrealistic features in some cases, they are still promising tools for image generation with high visual fidelity. This repository provides the code for 3D patch-based synthesis of medical images using Cycle-GAN. 
 
+### Architecture
+![](https://github.com/rekalantar/CycleGAN3D_Tensorflow/blob/main/images/cyclegan.png)
+
+### Contrast removal from CT
 ![](https://github.com/rekalantar/CycleGAN3D_Tensorflow/blob/main/images/contrastremoval.gif)
 
 ## Usage
