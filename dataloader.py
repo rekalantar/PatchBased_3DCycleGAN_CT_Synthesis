@@ -10,9 +10,10 @@ from monai.data import DataLoader, CacheDataset, Dataset
 def CreateDataloader(args, mode='train', shuffle=True, cache=False):
     '''
     params: 
-    args: The arguments from argsparser after running main.py
-    mode: train or test
-    data_path: path where .nii.gz files are stored
+    args: The arguments from argsparser after running main.py (including data_path, where the data is stored).
+    mode: 'train' or 'test'
+    shuffle: whether to shuffle data in the dataloader. Default=True.
+    cache: wheter to use CacheDataset from Monai to speed up preprocessing and training. Default=False.
     
     return: return the torch-based dataloader for train images
     '''
