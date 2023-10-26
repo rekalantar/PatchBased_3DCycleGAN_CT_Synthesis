@@ -49,8 +49,8 @@ def main():
 
     iteration = 0
     while iteration < args.max_iterations:
-        loop_index = 0
-        for batch_data in train_data_loader:
+
+        for loop_index, batch_data in enumerate(train_data_loader):
             imgA, imgB = batch_data["imgA"].detach().cpu().numpy()[0,...,None], batch_data["imgB"][0,...,None].detach().cpu().numpy()
             # print('imgA', imgA.shape, ' imgB', imgB.shape)
 
@@ -78,7 +78,6 @@ def main():
                 gan.D_A.save_weights(f'{out_path}/saved_weights/{iteration}_D_A.h5')
                 gan.D_B.save_weights(f'{out_path}/saved_weights/{iteration}_D_B.h5')
 
-            loop_index += 1
             iteration += 1
 
 if __name__ == "__main__":
